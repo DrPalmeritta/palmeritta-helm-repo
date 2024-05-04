@@ -26,4 +26,4 @@ helm repo update
 
 You can then run `helm search repo drpalmeritta` to see the charts.
 
-### Have a nice Day! 👋
+Have a nice Day! 👋
