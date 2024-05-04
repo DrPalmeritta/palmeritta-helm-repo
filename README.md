@@ -11,7 +11,7 @@ From microservices to complex infrastructures, these charts are meticulously cra
 - `main` branches contain charts that are under active development, to be released in an upcoming releases.
 - `gh-pages` branches contain packed charts that are ready to be published.
 
-### Browse through the repository and discover ready-to-use solutions that accelerate your DevOps journey. 
+Browse through the repository and discover ready-to-use solutions that accelerate your DevOps journey. 
 
 ## Usage
 
