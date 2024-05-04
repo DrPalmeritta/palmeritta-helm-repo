@@ -1,6 +1,6 @@
 ## Palmer`s Helm Chart Repository
 
-### Welcome to own Helm Chart Repository! 
+### Welcome to my own Helm Chart Repository! 
 
 Here, you'll find a collection of curated Helm charts designed to streamline the deployment of various applications and services.
 
@@ -26,4 +26,4 @@ helm repo update
 
 You can then run `helm search repo drpalmeritta` to see the charts.
 
-👋 Have a nice Day!
+### Have a nice Day! 👋
