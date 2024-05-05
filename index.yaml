@@ -1,9 +1,33 @@
 apiVersion: v1
 entries:
+  chartmuseum:
+  - apiVersion: v2
+    appVersion: 0.16.1
+    created: "2024-05-05T12:16:03.607615374Z"
+    description: Own helm chart repository with chartmuseum
+    digest: ca780fb175782000012c33cfa7d15ea187b98fccd65a83be18f0cf6561058571
+    maintainers:
+    - email: zalupa@gmail.com
+      name: nikitaevdokimov
+    name: chartmuseum
+    urls:
+    - https://DrPalmeritta.github.io/palmeritta-helm-repo/chartmuseum-3.10.4.tgz
+    version: 3.10.4
+  fluxcd:
+  - apiVersion: v2
+    appVersion: 2.2.3
+    created: "2024-05-05T12:16:03.610335995Z"
+    description: A Helm chart for own local fluxcd
+    digest: 08ad1ea079f984c3f77c5ee2ac220f9166695abc11cbf3e5c5ef4853bfdc383b
+    name: fluxcd
+    type: application
+    urls:
+    - https://DrPalmeritta.github.io/palmeritta-helm-repo/fluxcd-2.12.5.tgz
+    version: 2.12.5
   kube-prometheus-stack:
   - apiVersion: v2
     appVersion: v0.71.2
-    created: "2024-05-05T12:03:31.674591436Z"
+    created: "2024-05-05T12:16:03.655356111Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -22,7 +46,7 @@ entries:
       repository: https://grafana.github.io/helm-charts
       version: 7.3.*
     description: kube-prometheus-stack helm chart for local microk8s
-    digest: e9bd1b4d5d2930bbef925841d742d90aea4146a7e37ecd09809df8b3f0aae6ce
+    digest: 8051823847046caa1013136a4dfed4d3904f2ef4853e16b167a11525c7b29637
     kubeVersion: '>=1.19.0-0'
     maintainers:
     - email: zalupa@gmail.com
@@ -32,4 +56,4 @@ entries:
     urls:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/kube-prometheus-stack-56.21.14.tgz
     version: 56.21.14
-generated: "2024-05-05T12:03:31.627916875Z"
+generated: "2024-05-05T12:16:03.605785508Z"
