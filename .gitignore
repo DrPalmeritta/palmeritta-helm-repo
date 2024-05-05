@@ -1,6 +1,6 @@
 ### Helm ###
 # Chart dependencies
-charts/**/charts/*
+# charts/**/charts/*
 charts/**/Chart.lock
 charts/**/values-dev.yaml
 
