@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 0.16.1
+description: Own helm chart repository with chartmuseum
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: chartmuseum
+version: 3.10.4
