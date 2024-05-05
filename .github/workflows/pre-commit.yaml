@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths: ["charts/**"]
-  #workflow_dispatch: #TODO
+  workflow_dispatch:
 
 jobs:
   pre-commit:
