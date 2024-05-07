@@ -3,9 +3,9 @@ entries:
   chartmuseum:
   - apiVersion: v2
     appVersion: 0.16.1
-    created: "2024-05-06T16:34:56.004563422Z"
+    created: "2024-05-07T18:05:18.844726197Z"
     description: Own helm chart repository with chartmuseum
-    digest: b4b6115cdf4f685b705573b4124659816f6f2ae765fb684edd470389aec5af66
+    digest: 0b01387e03e9501fe9c3888af4e97201897b04bd4f0977524cf85a4dfd668a19
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -16,18 +16,32 @@ entries:
   fluxcd:
   - apiVersion: v2
     appVersion: 2.2.3
-    created: "2024-05-06T16:34:56.00775084Z"
+    created: "2024-05-07T18:05:18.847517318Z"
     description: A Helm chart for own local fluxcd
-    digest: 8f0ec81f75866f24ced841f1b8b777a2679dfb31bb062a69a9beb1cc3ce80611
+    digest: fb3be167fd2b3b15835bdd6b48b83f0a956cb43c3249319c7f296c43a800c068
     name: fluxcd
     type: application
     urls:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/fluxcd-2.12.5.tgz
     version: 2.12.5
+  jenkins:
+  - apiVersion: v2
+    appVersion: 2.440.3
+    created: "2024-05-07T18:05:18.849862138Z"
+    description: Helm chart for Jenkins
+    digest: 95463a04ec42928cea155edcaba9c96a6b29eaac342e4973b411bf960c98d779
+    maintainers:
+    - email: zalupa@gmail.com
+      name: nikitaevdokimov
+    name: jenkins
+    type: application
+    urls:
+    - https://DrPalmeritta.github.io/palmeritta-helm-repo/jenkins-5.1.11.tgz
+    version: 5.1.11
   kube-prometheus-stack:
   - apiVersion: v2
     appVersion: v0.71.2
-    created: "2024-05-06T16:34:56.051589843Z"
+    created: "2024-05-07T18:05:18.894256353Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -46,7 +60,7 @@ entries:
       repository: https://grafana.github.io/helm-charts
       version: 7.3.*
     description: kube-prometheus-stack helm chart for local microk8s
-    digest: 3745f929982c38f3dbc7c769e5519cff5b59cf57fa35bcc8a50195104cbfe474
+    digest: 98d842776cba2d3a0a09bdd1d854d35dbe67f4eee7149fafcfac6583dbf13e8a
     kubeVersion: '>=1.19.0-0'
     maintainers:
     - email: zalupa@gmail.com
@@ -59,12 +73,12 @@ entries:
   teamcity-server:
   - apiVersion: v2
     appVersion: "2023.11"
-    created: "2024-05-06T16:34:56.052329954Z"
+    created: "2024-05-07T18:05:18.895169332Z"
     description: A Helm chart for deploy HA teamcity server
-    digest: 1aab5049cf02cf545d6aabe807a254cabc4c3a20963acc3d48cd5a7dd0d4adbf
+    digest: 8b8d01fb86d6c7e497ce2d25e299766ddbc10da99fb88ec961c3a6a2ba9d7af9
     name: teamcity-server
     type: application
     urls:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/teamcity-server-3.1.1.tgz
     version: 3.1.1
-generated: "2024-05-06T16:34:56.003551284Z"
+generated: "2024-05-07T18:05:18.843406537Z"
