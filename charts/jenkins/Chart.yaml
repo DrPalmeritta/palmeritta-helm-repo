@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 2.440.3
+description: Helm chart for Jenkins
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: jenkins
+type: application
+version: 5.1.11
