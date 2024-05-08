@@ -966,18 +966,18 @@ agent:
   # Configure the attributes as they appear in the corresponding Java class for that type
   # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes
   # -- Additional volumes
-  volumes: []
+  volumes: #[]
   # - type: ConfigMap
   #   configMapName: myconfigmap
   #   mountPath: /var/myapp/myconfigmap
   # - type: EmptyDir
   #   mountPath: /var/myapp/myemptydir
   #   memory: false
-  # - type: EphemeralVolume
-  #   mountPath: /var/myapp/myephemeralvolume
-  #   accessModes: ReadWriteOnce
-  #   requestsSize: 10Gi
-  #   storageClassName: mystorageclass
+  - type: EphemeralVolume
+    mountPath: /var/myapp/myephemeralvolume
+    accessModes: ReadWriteOnce
+    requestsSize: 4Gi #10Gi
+    storageClassName: mystorageclass
   # - type: HostPath
   #   hostPath: /var/lib/containers
   #   mountPath: /var/myapp/myhostpath
