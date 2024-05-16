@@ -1,0 +1,33 @@
+apiVersion: v2
+appVersion: 7.17.3
+description: Helm chart for full ELK stack deployment
+
+dependencies:
+- alias: es-master
+  name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 7.17.3
+- alias: es-data
+  name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 7.17.3
+- alias: es-client
+  name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 7.17.3
+- name: kibana
+  repository: https://helm.elastic.co
+  version: 7.17.3
+- name: logstash
+  repository: https://helm.elastic.co
+  version: 7.17.3
+- name: filebeat
+  repository: https://helm.elastic.co
+  version: 7.17.3
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: elk-stack
+version: 1.0.1

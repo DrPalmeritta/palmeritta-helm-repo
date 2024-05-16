@@ -1,0 +1,10 @@
+apiVersion: v1
+appVersion: 7.17.3
+description: Official Elastic helm chart for Elasticsearch
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: elasticsearch
+version: 7.17.3

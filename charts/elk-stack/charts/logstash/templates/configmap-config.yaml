@@ -1,0 +1,15 @@
+{{- if .Values.logstashConfig.enabled -}}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "logstash.fullname" . }}-config
+  labels:
+    app: "{{ template "logstash.fullname" . }}"
+    chart: "{{ .Chart.Name }}"
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+data:
+  logstash.yml: |
+{{ .Files.Get "configs/logstash.yml" | indent 4 }}
+{{- end -}}

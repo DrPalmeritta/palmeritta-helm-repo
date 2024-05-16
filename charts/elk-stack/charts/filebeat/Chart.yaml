@@ -1,0 +1,10 @@
+apiVersion: v1
+appVersion: 7.17.3
+description: Official Elastic helm chart for Filebeat
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: filebeat
+version: 7.17.3
