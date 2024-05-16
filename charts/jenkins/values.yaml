@@ -976,7 +976,7 @@ agent:
   - type: EphemeralVolume
     mountPath: /var/myapp/myephemeralvolume
     accessModes: ReadWriteOnce
-    requestsSize: 4Gi #10Gi
+    requestsSize: 1Gi #10Gi
     storageClassName: mystorageclass
   # - type: HostPath
   #   hostPath: /var/lib/containers
