@@ -1,0 +1,49 @@
+{{- if .Values.filebeatConfig }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "filebeat.fullname" . }}-config
+  labels:
+    app: "{{ template "filebeat.fullname" . }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+data:
+  filebeat.yml: |
+{{ .Files.Get "configs/filebeat.yml" | indent 4 }}
+{{- end -}}
+
+
+{{- if and .Values.daemonset.enabled .Values.daemonset.filebeatConfig.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "filebeat.fullname" . }}-daemonset-config
+  labels:
+    app: "{{ template "filebeat.fullname" . }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+data:
+  filebeat.yml: |
+{{ .Files.Get "configs/filebeat.yml" | indent 4 }}
+{{- end -}}
+
+{{- if and .Values.deployment.enabled .Values.deployment.filebeatConfig.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "filebeat.fullname" . }}-deployment-config
+  labels:
+    app: "{{ template "filebeat.fullname" . }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service | quote }}
+    release: {{ .Release.Name | quote }}
+data:
+data:
+  filebeat.yml: |
+{{ .Files.Get "configs/filebeat.yml" | indent 4 }}
+{{- end -}}
