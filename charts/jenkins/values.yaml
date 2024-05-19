@@ -973,11 +973,11 @@ agent:
   # - type: EmptyDir
   #   mountPath: /var/myapp/myemptydir
   #   memory: false
-  - type: EphemeralVolume
-    mountPath: /var/myapp/myephemeralvolume
-    accessModes: ReadWriteOnce
-    requestsSize: 1Gi #10Gi
-    storageClassName: mystorageclass
+  # - type: EphemeralVolume
+  #   mountPath: /var/myapp/myephemeralvolume
+  #   accessModes: ReadWriteOnce
+  #   requestsSize: 1Gi #10Gi
+  #   storageClassName: mystorageclass
   # - type: HostPath
   #   hostPath: /var/lib/containers
   #   mountPath: /var/myapp/myhostpath
