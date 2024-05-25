@@ -111,12 +111,12 @@ controller:
 
   # -- Resource allocation (Requests and Limits)
   resources:
-    requests:
-      cpu: 50m
-      memory: 256Mi
-    limits:
-      cpu: 500m #2000m
-      memory: 1024Mi #4096Mi
+    requests: {}
+      # cpu: 50m
+      # memory: 256Mi
+    limits: {}
+      # cpu: 500m #2000m
+      # memory: 1024Mi #4096Mi
 
   # Share process namespace to allow sidecar containers to interact with processes in other containers in the same pod
   shareProcessNamespace: false
@@ -966,18 +966,18 @@ agent:
   # Configure the attributes as they appear in the corresponding Java class for that type
   # https://github.com/jenkinsci/kubernetes-plugin/tree/master/src/main/java/org/csanchez/jenkins/plugins/kubernetes/volumes
   # -- Additional volumes
-  volumes: #[]
+  volumes: []
   # - type: ConfigMap
   #   configMapName: myconfigmap
   #   mountPath: /var/myapp/myconfigmap
   # - type: EmptyDir
   #   mountPath: /var/myapp/myemptydir
   #   memory: false
-  - type: EphemeralVolume
-    mountPath: /var/myapp/myephemeralvolume
-    accessModes: ReadWriteOnce
-    requestsSize: 1Gi #10Gi
-    storageClassName: mystorageclass
+  # - type: EphemeralVolume #TODO
+  #   mountPath: /var/myapp/myephemeralvolume
+  #   accessModes: ReadWriteOnce
+  #   requestsSize: 1Gi #10Gi
+  #   storageClassName: mystorageclass
   # - type: HostPath
   #   hostPath: /var/lib/containers
   #   mountPath: /var/myapp/myhostpath
