@@ -3,9 +3,9 @@ entries:
   chartmuseum:
   - apiVersion: v2
     appVersion: 0.16.1
-    created: "2024-05-27T17:58:49.079787751Z"
+    created: "2024-05-27T18:05:06.644938849Z"
     description: Own helm chart repository with chartmuseum
-    digest: 1fc28e2577c1044512b9c4136407c755ddd71015853a042103dfc234fe6dbcc0
+    digest: bdaff10eace206d07882743c73261da1eb36c75a3bba21c0d1895fb28d79aeed
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -16,7 +16,7 @@ entries:
   elk-stack:
   - apiVersion: v2
     appVersion: 7.17.3
-    created: "2024-05-27T17:58:49.087562196Z"
+    created: "2024-05-27T18:05:06.651811061Z"
     dependencies:
     - alias: es-master
       name: elasticsearch
@@ -40,7 +40,7 @@ entries:
       repository: https://helm.elastic.co
       version: 7.17.3
     description: Helm chart for full ELK stack deployment
-    digest: aa371d44f06c4548788897d3b5ab0ac78a3f1870d1460e951f9998b62221559c
+    digest: 37b70450bd865e371f01f614a22ea3a36ccd94bd4992d8b158bb80a3f92ec289
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -51,9 +51,9 @@ entries:
   fluxcd:
   - apiVersion: v2
     appVersion: 2.2.3
-    created: "2024-05-27T17:58:49.090720942Z"
+    created: "2024-05-27T18:05:06.654842031Z"
     description: A Helm chart for own local fluxcd
-    digest: 39dd76389ee0564b34ed8db60b8c7115af85d67b1e7871550ac716b2b9a0c052
+    digest: b2bea463729280f79f79f9581427433cd01f17d76126cd9023593609f2637a63
     name: fluxcd
     type: application
     urls:
@@ -62,9 +62,9 @@ entries:
   jenkins:
   - apiVersion: v2
     appVersion: 2.440.3
-    created: "2024-05-27T17:58:49.092856795Z"
+    created: "2024-05-27T18:05:06.657026092Z"
     description: Helm chart for Jenkins
-    digest: 7eb3c29e3cabbce63557f06c0ddda49d18dc14da98df8db30cac16940b84378e
+    digest: 3a9ff0495443fae96350d3d795bccd2405982b8c220e5dbab845b189510baafd
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -107,7 +107,7 @@ entries:
     version: 56.21.15
   - apiVersion: v2
     appVersion: v0.71.2
-    created: "2024-05-25T16:11:00.28046701Z"
+    created: "2024-05-27T18:05:06.702585324Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -126,7 +126,7 @@ entries:
       repository: https://grafana.github.io/helm-charts
       version: 7.3.*
     description: kube-prometheus-stack helm chart for local microk8s
-    digest: 0b10be6e2b6a7b4f1f48e34866ab5fc017c59ce47c14205076369cbcc775abb9
+    digest: 38925a0ca429c74a16edaaca909216e30264581082d03e1ff1ccd180a704c550
     kubeVersion: '>=1.19.0-0'
     maintainers:
     - email: zalupa@gmail.com
@@ -139,12 +139,12 @@ entries:
   teamcity-server:
   - apiVersion: v2
     appVersion: "2023.11"
-    created: "2024-05-27T17:58:49.139058437Z"
+    created: "2024-05-27T18:05:06.703343257Z"
     description: A Helm chart for deploy HA teamcity server
-    digest: 98db3b3d103918be7796d8abfe9f7ea4d5e62cdf011158d2817d15ecb8c26cb3
+    digest: 993bdd70b3da243d0ae600da1a95bfadfb19ddefb4365f16a46e7d7db5022a42
     name: teamcity-server
     type: application
     urls:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/teamcity-server-3.1.1.tgz
     version: 3.1.1
-generated: "2024-05-27T17:58:49.078781701Z"
+generated: "2024-05-27T18:05:06.64287286Z"
