@@ -1,3 +1,4 @@
+---
 {{- if $.Values.serviceAccount.enabled }}
 apiVersion: v1
 kind: ServiceAccount
