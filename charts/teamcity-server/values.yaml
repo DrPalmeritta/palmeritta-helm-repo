@@ -1,3 +1,4 @@
+---
 image:
   repository: jetbrains/teamcity-server
   tag: latest
@@ -110,24 +111,24 @@ teamcity:
           app: "{{ $.Release.Name }}"
   ## @param teamcity.nodes[<index>] override per <index> of sts node
   nodes:
-  ## @param teamcity.nodes[<index>].ingress.host passed to ingress/tls if not empty
-  - ingress:
-      host: teamcity-main.example.com
-    ## @param temacity.nodes[<index>].env used to override env per node
-    # env:
-    #   ROOT_URL: "http://{{ $.Release.Name }}-{{ $index }}.{{ $.Release.Name }}-headless.{{ $.Release.Namespace}}:8111"
-    #   NODE_ID: "{{ $.Release.Name }}-{{ $index }}"
-    responsibilities:
-    - MAIN_NODE
-    - CAN_PROCESS_BUILD_TRIGGERS
-    - CAN_PROCESS_USER_DATA_MODIFICATION_REQUESTS
-    - CAN_CHECK_FOR_CHANGES
-    - CAN_PROCESS_BUILD_MESSAGES
-  - responsibilities:
-    - CAN_PROCESS_BUILD_TRIGGERS
-    - CAN_PROCESS_USER_DATA_MODIFICATION_REQUESTS
-    - CAN_CHECK_FOR_CHANGES
-    - CAN_PROCESS_BUILD_MESSAGES
+    ## @param teamcity.nodes[<index>].ingress.host passed to ingress/tls if not empty
+    - ingress:
+        host: teamcity-main.example.com
+      ## @param temacity.nodes[<index>].env used to override env per node
+      # env:
+      #   ROOT_URL: "http://{{ $.Release.Name }}-{{ $index }}.{{ $.Release.Name }}-headless.{{ $.Release.Namespace}}:8111"
+      #   NODE_ID: "{{ $.Release.Name }}-{{ $index }}"
+      responsibilities:
+      - MAIN_NODE
+      - CAN_PROCESS_BUILD_TRIGGERS
+      - CAN_PROCESS_USER_DATA_MODIFICATION_REQUESTS
+      - CAN_CHECK_FOR_CHANGES
+      - CAN_PROCESS_BUILD_MESSAGES
+    - responsibilities:
+      - CAN_PROCESS_BUILD_TRIGGERS
+      - CAN_PROCESS_USER_DATA_MODIFICATION_REQUESTS
+      - CAN_CHECK_FOR_CHANGES
+      - CAN_PROCESS_BUILD_MESSAGES
 
 serviceAccount:
   enabled: false

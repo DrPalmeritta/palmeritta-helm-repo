@@ -1,3 +1,4 @@
+---
 {{- if $.Values.serviceAccount.enabled }}
 {{- if $.Values.serviceAccount.agentRBAC.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
