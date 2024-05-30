@@ -1,0 +1,21 @@
+apiVersion: v2
+appVersion: 24.0.4
+description: Keycloak is a high performance Java-based identity and access management solution.
+
+dependencies:
+- condition: postgresql.enabled
+  name: postgresql
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 15.x.x
+- name: common
+  repository: oci://registry-1.docker.io/bitnamicharts
+  tags:
+  - bitnami-common
+  version: 2.x.x
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: keycloak
+version: 21.3.2
