@@ -27,4 +27,4 @@ maintainers:
 
 name: kube-prometheus-stack
 type: application
-version: 56.21.14
+version: 56.21.16

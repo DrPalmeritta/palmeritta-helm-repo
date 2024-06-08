@@ -697,34 +697,35 @@ notifiers: {}
 ##
 ## `path` must be /var/lib/grafana/dashboards/<provider_name>
 ##
-dashboardProviders:
-  dashboardproviders.yaml:
-    apiVersion: 1
-    providers:
-    - name: 'Total'
-      orgId: 1
-      folder: 'Total'
-      type: file
-      disableDeletion: false
-      editable: true
-      options:
-        path: /var/lib/grafana/dashboards/total
-    - name: 'Kubernetes'
-      orgId: 1
-      folder: 'Kubernetes'
-      type: file
-      disableDeletion: false
-      editable: true
-      options:
-        path: /var/lib/grafana/dashboards/kubernetes
-    - name: 'NodeExporter'
-      orgId: 1
-      folder: 'NodeExporter'
-      type: file
-      disableDeletion: false
-      editable: true
-      options:
-        path: /var/lib/grafana/dashboards/nodeexporter
+dashboardProviders: {}
+  # dashboardproviders.yaml:
+  #   apiVersion: 1
+  #   providers:
+  #   - name: 'Total'
+  #     orgId: 1
+  #     folder: 'Total'
+  #     type: file
+  #     disableDeletion: false
+  #     editable: true
+  #     options:
+  #       path: /var/lib/grafana/dashboards/total
+  #   - name: 'Kubernetes'
+  #     orgId: 1
+  #     folder: 'Kubernetes'
+  #     type: file
+  #     disableDeletion: false
+  #     editable: true
+  #     options:
+  #       path: /var/lib/grafana/dashboards/kubernetes
+  #   - name: 'NodeExporter'
+  #     orgId: 1
+  #     folder: 'NodeExporter'
+  #     type: file
+  #     disableDeletion: false
+  #     editable: true
+  #     options:
+  #       path: /var/lib/grafana/dashboards/nodeexporter
+}
 
 ## Configure grafana dashboard to import
 ## NOTE: To use dashboards you must also enable/configure dashboardProviders
@@ -732,70 +733,70 @@ dashboardProviders:
 ##
 ## dashboards per provider, use provider name as key.
 ##
-dashboards:
-  total:
-    alertmanager-overview:
-      file: "dashboards/total/alertmanager-overview.json"
-    coredns:
-      file: "dashboards/total/coredns.json"
-    etcd:
-      file: "dashboards/total/etcd.json"
-    grafana-overview:
-      file: "dashboards/total/grafana-overview.json"
-    loki-error-messages:
-      file: "dashboards/total/loki-error-messages.json"
-    micro-query-batch-counters:
-      file: "dashboards/total/micro-query-batch-counters.json"
-    nginx-ingress-controller:
-      file: "dashboards/total/nginx-ingress-controller.json"
-    prometheus-overview:
-      file: "dashboards/total/prometheus-overview.json"
-  kubernetes:
-    kubernetes-api-server:
-      file: "dashboards/kubernetes/kubernetes-api-server.json"
-    kubernetes-compute-resources-cluster:
-      file: "dashboards/kubernetes/kubernetes-compute-resources-cluster.json"
-    kubernetes-compute-resources-namespace-pods:
-      file: "dashboards/kubernetes/kubernetes-compute-resources-namespace-pods.json"
-    kubernetes-compute-resources-namespace-workloads:
-      file: "dashboards/kubernetes/kubernetes-compute-resources-namespace-workloads.json"
-    kubernetes-compute-resources-node-pods:
-      file: "dashboards/kubernetes/kubernetes-compute-resources-node-pods.json"
-    kubernetes-compute-resources-pod:
-      file: "dashboards/kubernetes/kubernetes-compute-resources-pod.json"
-    kubernetes-compute-resources-workload:
-      file: "dashboards/kubernetes/kubernetes-compute-resources-workload.json"
-    kubernetes-controller-manager:
-      file: "dashboards/kubernetes/kubernetes-controller-manager.json"
-    kubernetes-kubelet:
-      file: "dashboards/kubernetes/kubernetes-kubelet.json"
-    kubernetes-networking-cluster:
-      file: "dashboards/kubernetes/kubernetes-networking-cluster.json"
-    kubernetes-networking-namespace-pods:
-      file: "dashboards/kubernetes/kubernetes-networking-namespace-pods.json"
-    kubernetes-networking-namespace-workload:
-      file: "dashboards/kubernetes/kubernetes-networking-namespace-workload.json"
-    kubernetes-networking-pod:
-      file: "dashboards/kubernetes/kubernetes-networking-pod.json"
-    kubernetes-networking-workload:
-      file: "dashboards/kubernetes/kubernetes-networking-workload.json"
-    kubernetes-persistent-volumes:
-      file: "dashboards/kubernetes/kubernetes-persistent-volumes.json"
-    kubernetes-proxy:
-      file: "dashboards/kubernetes/kubernetes-proxy.json"
-    kubernetes-scheduler:
-      file: "dashboards/kubernetes/kubernetes-scheduler.json"
-  nodeexporter:
-    node-exporter-full:
-      file: "dashboards/nodeexporter/node-exporter-full.json"
-    node-exporter-macos:
-      file: "dashboards/nodeexporter/node-exporter-macos.json"
-    node-exporter-nodes:
-      file: "dashboards/nodeexporter/node-exporter-nodes.json"
-    node-exporter-use-method-cluster:
-      file: "dashboards/nodeexporter/node-exporter-use-method-cluster.json"
-    node-exporter-use-method-node:
-      file: "dashboards/nodeexporter/node-exporter-use-method-node.json"
+dashboards: {}
+  # total:
+  #   alertmanager-overview:
+  #     file: "dashboards/total/alertmanager-overview.json"
+  #   coredns:
+  #     file: "dashboards/total/coredns.json"
+  #   etcd:
+  #     file: "dashboards/total/etcd.json"
+  #   grafana-overview:
+  #     file: "dashboards/total/grafana-overview.json"
+  #   loki-error-messages:
+  #     file: "dashboards/total/loki-error-messages.json"
+  #   micro-query-batch-counters:
+  #     file: "dashboards/total/micro-query-batch-counters.json"
+  #   nginx-ingress-controller:
+  #     file: "dashboards/total/nginx-ingress-controller.json"
+  #   prometheus-overview:
+  #     file: "dashboards/total/prometheus-overview.json"
+  # kubernetes:
+  #   kubernetes-api-server:
+  #     file: "dashboards/kubernetes/kubernetes-api-server.json"
+  #   kubernetes-compute-resources-cluster:
+  #     file: "dashboards/kubernetes/kubernetes-compute-resources-cluster.json"
+  #   kubernetes-compute-resources-namespace-pods:
+  #     file: "dashboards/kubernetes/kubernetes-compute-resources-namespace-pods.json"
+  #   kubernetes-compute-resources-namespace-workloads:
+  #     file: "dashboards/kubernetes/kubernetes-compute-resources-namespace-workloads.json"
+  #   kubernetes-compute-resources-node-pods:
+  #     file: "dashboards/kubernetes/kubernetes-compute-resources-node-pods.json"
+  #   kubernetes-compute-resources-pod:
+  #     file: "dashboards/kubernetes/kubernetes-compute-resources-pod.json"
+  #   kubernetes-compute-resources-workload:
+  #     file: "dashboards/kubernetes/kubernetes-compute-resources-workload.json"
+  #   kubernetes-controller-manager:
+  #     file: "dashboards/kubernetes/kubernetes-controller-manager.json"
+  #   kubernetes-kubelet:
+  #     file: "dashboards/kubernetes/kubernetes-kubelet.json"
+  #   kubernetes-networking-cluster:
+  #     file: "dashboards/kubernetes/kubernetes-networking-cluster.json"
+  #   kubernetes-networking-namespace-pods:
+  #     file: "dashboards/kubernetes/kubernetes-networking-namespace-pods.json"
+  #   kubernetes-networking-namespace-workload:
+  #     file: "dashboards/kubernetes/kubernetes-networking-namespace-workload.json"
+  #   kubernetes-networking-pod:
+  #     file: "dashboards/kubernetes/kubernetes-networking-pod.json"
+  #   kubernetes-networking-workload:
+  #     file: "dashboards/kubernetes/kubernetes-networking-workload.json"
+  #   kubernetes-persistent-volumes:
+  #     file: "dashboards/kubernetes/kubernetes-persistent-volumes.json"
+  #   kubernetes-proxy:
+  #     file: "dashboards/kubernetes/kubernetes-proxy.json"
+  #   kubernetes-scheduler:
+  #     file: "dashboards/kubernetes/kubernetes-scheduler.json"
+  # nodeexporter:
+  #   node-exporter-full:
+  #     file: "dashboards/nodeexporter/node-exporter-full.json"
+  #   node-exporter-macos:
+  #     file: "dashboards/nodeexporter/node-exporter-macos.json"
+  #   node-exporter-nodes:
+  #     file: "dashboards/nodeexporter/node-exporter-nodes.json"
+  #   node-exporter-use-method-cluster:
+  #     file: "dashboards/nodeexporter/node-exporter-use-method-cluster.json"
+  #   node-exporter-use-method-node:
+  #     file: "dashboards/nodeexporter/node-exporter-use-method-node.json"
 
 ## Reference to external ConfigMap per provider. Use provider name as key and ConfigMap name as value.
 ## A provider dashboards must be defined either by external ConfigMaps or in values.yaml, not in both.
@@ -822,10 +823,11 @@ grafana.ini:
     check_for_updates: true
   log:
     mode: console
-  auth.anonymous:
-    enabled: true
-    org_name: "Main Org."
-    org_role: Viewer
+  auth:
+    anonymous:
+      enabled: true
+      org_name: "Main Org."
+      org_role: Viewer
   users:
     viewers_can_edit: true
   grafana_net:
@@ -922,7 +924,7 @@ sidecar:
   # Log level default for all sidecars. Can be one of: DEBUG, INFO, WARN, ERROR, CRITICAL. Defaults to INFO
   # logLevel: INFO
   alerts:
-    enabled: false
+    enabled: true
     # Additional environment variables for the alerts sidecar
     env: {}
     # Do not reprocess already processed unchanged resources on k8s API reconnect.
@@ -964,7 +966,7 @@ sidecar:
     # Sets the size limit of the alert sidecar emptyDir volume
     sizeLimit: {}
   dashboards:
-    enabled: false
+    enabled: true
     # Additional environment variables for the dashboards sidecar
     env: {}
     # Do not reprocess already processed unchanged resources on k8s API reconnect.
@@ -1068,7 +1070,7 @@ sidecar:
     # Sets the size limit of the datasource sidecar emptyDir volume
     sizeLimit: {}
   plugins:
-    enabled: false
+    enabled: true
     # Additional environment variables for the plugins sidecar
     env: {}
     # Do not reprocess already processed unchanged resources on k8s API reconnect.
