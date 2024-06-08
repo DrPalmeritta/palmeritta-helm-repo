@@ -725,7 +725,6 @@ dashboardProviders: {}
   #     editable: true
   #     options:
   #       path: /var/lib/grafana/dashboards/nodeexporter
-}
 
 ## Configure grafana dashboard to import
 ## NOTE: To use dashboards you must also enable/configure dashboardProviders
