@@ -5,5 +5,5 @@ description: A Helm chart for Kubernetes
 
 name: nextjs-demo
 type: application
-version: 0.1.1
+version: 1.0.1
 
