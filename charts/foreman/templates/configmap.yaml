@@ -1,0 +1,47 @@
+{{- if not .Values.config.existingConfigMap }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "foreman.configMapName" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "foreman.labels" . | nindent 4 }}
+    {{- if .Values.global.commonLabels }}
+    {{- include "foreman.renderTplValues" ( dict "value" .Values.global.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.global.commonAnnotations }}
+  annotations: {{- include "foreman.renderTplValues" ( dict "value" .Values.global.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+data:
+  00-config.yaml: |
+    kubeConfig:
+      source: "in-cluster"
+    {{- if or .Values.config.cronJob.namespace .Values.config.cronJob.name }}
+    cronJob:
+      namespace: {{ required "When configuring cronJob, both namespace and name are required." .Values.config.cronJob.namespace | quote }}
+      name: {{ required "When configuring cronJob, both namespace and name are required." .Values.config.cronJob.name | quote }}
+    {{- end }}
+    {{- if .Values.config.cookies.maxAge }}
+    cookies:
+      maxAge: {{ .Values.config.cookies.maxAge | quote }}
+    {{- end }}
+    {{- if or .Values.config.auth.local.enabled .Values.config.auth.oidc.enabled }}
+    auth:
+      {{- if .Values.config.auth.local.enabled }}
+      local:
+        enabled: {{ .Values.config.auth.local.enabled | toString }}
+        {{- if .Values.config.auth.local.username }}
+        username: {{ .Values.config.auth.local.username | quote }}
+        {{- end }}
+      {{- end}}
+      {{- if .Values.config.auth.oidc.enabled }}
+      oidc:
+        enabled: {{ .Values.config.auth.oidc.enabled | toString }}
+        issuer: {{ required "When configuring OIDC an issuer is required." .Values.config.auth.oidc.issuer | quote }}
+        publicUrl: {{ required "When configuring OIDC a publicUrl is required." .Values.config.auth.oidc.publicUrl | quote }}
+      {{- end }}
+    {{- end }}
+    {{- if .Values.config.gitlab.host }}
+    gitlab:
+      host: {{ .Values.config.gitlab.host | quote }}
+    {{- end }}
+{{- end }}

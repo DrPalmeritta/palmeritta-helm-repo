@@ -1,0 +1,115 @@
+## @section Global configuration options
+##
+## @param global.nameOverride String to partially override foreman standard name
+## @param global.commonLabels Labels to add to all deployed objects
+## @param global.commonAnnotations Annotations to add to all deployed objects
+##
+global:
+  nameOverride: ""
+  commonLabels: {}
+  commonAnnotations: {}
+
+## @section Image configuration
+##
+## @param image.repository Docker image repository
+## @param image.tag Docker image tag
+## @param image.pullPolicy Docker image pull policy
+## @param image.pullSecrets Docker registry secret names as an array
+##
+image:
+  repository: contane/foreman
+  tag: 0.3.0
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+## @section Common configuration options
+##
+## @param replicaCount Number of replicas to deploy
+## @param serviceAccountName Service Account Name
+##
+replicaCount: 1
+serviceAccountName: ""
+
+## @section Resource requests and limits
+## All parameters have default value set to prevent possible resource leaks.
+## ref: https://kubernetes.io/docs/user-guide/compute-resources/
+##
+## @param resources.limits.memory The maximum amount of memory that the container can use
+## @param resources.limits.cpu The maximum amount of CPU that the container can use
+## @param resources.requests.memory The requested memory for the container
+## @param resources.requests.cpu The requested CPU for the container
+##
+resources:
+  limits: {}
+    # memory: "512Mi"
+    # cpu: "250m"
+  requests: {}
+    # memory: "256Mi"
+    # cpu: "100m"
+
+## @section Ingress configuration
+##
+## @param ingress.className Ingress class name
+## @param ingress.host IP or hostname to access the service
+## @param ingress.path Path within the url structure
+## @param ingress.annotations Ingress annotations
+## @param ingress.tls.secretName TLS secret name
+##
+ingress:
+  className: nginx
+  host: foreman.local
+  path: /
+  annotations: {}
+  tls: {}
+    # secretName: foreman-ingress-tls
+
+## @section Application runtime configuration
+##
+## @param config.existingSecret Name of an existing secret containing the configuration
+## @param config.existingConfigMap Name of an existing configmap containing the configuration
+##
+## @param config.cronJob.namespace Namespace where the CronJob is deployed
+## @param config.cronJob.name Name of the CronJob
+##
+## @param config.cookies.key Key which is used to encrypt the session cookie
+## @param config.cookies.maxAge Max age of the session cookie, e.g. "24h" or "7 days"
+##
+## @param config.auth.local.enabled Enable local authentication
+## @param config.auth.local.username Username of the local admin user
+## @param config.auth.local.password Password of the local admin user
+##
+## @param config.auth.oidc.enabled Enable OIDC authentication
+## @param config.auth.oidc.issuer Issuer of the OIDC provider
+## @param config.auth.oidc.clientId Client ID of the OIDC provider
+## @param config.auth.oidc.clientSecret Client Secret of the OIDC provider
+## @param config.auth.oidc.publicUrl Public URL of the foreman instance
+##
+## @param config.gitlab.host Optional: URL of the GitLab instance (if GitLab features should be active)
+config:
+  existingSecret: ""
+  existingConfigMap: ""
+
+  cronJob:
+    namespace: ""
+    name: ""
+
+  cookies:
+    key: ""
+    maxAge: ""
+
+  auth:
+    ## Configuration options for local login
+    local:
+      enabled: true #false
+      username: ""
+      password: ""
+    ## Configuration options for OIDC login
+    oidc:
+      enabled: true #false
+      issuer: ""
+      clientId: ""
+      clientSecret: ""
+      publicUrl: ""
+
+  gitlab:
+    host: ""

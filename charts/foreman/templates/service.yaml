@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "foreman.name" . }}-http-service
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "foreman.labels" . | nindent 4 }}
+    {{- if .Values.global.commonLabels }}
+    {{- include "foreman.renderTplValues" ( dict "value" .Values.global.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.global.commonAnnotations }}
+  annotations: {{- include "foreman.renderTplValues" ( dict "value" .Values.global.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: application
+  selector:
+    app.kubernetes.io/name: {{ include "foreman.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

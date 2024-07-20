@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 0.3.0
+description: A web UI for managing Renovate jobs.
+
+maintainers:
+- name: nikitaevdokimov
+  email: zalupa@gmail.com
+
+name: foreman
+type: application
+version: 0.1.0
