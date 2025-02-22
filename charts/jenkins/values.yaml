@@ -1,5 +1,7 @@
 # Default values for jenkins.
 # This is a YAML-formatted file.
+# Declare name/value pairs to be passed into your templates.
+# name: value
 
 ## Overrides for generated resource names
 # See templates/_helpers.tpl
@@ -111,15 +113,21 @@ controller:
 
   # -- Resource allocation (Requests and Limits)
   resources:
-    requests: {}
-      # cpu: 50m
-      # memory: 256Mi
-    limits: {}
-      # cpu: 500m #2000m
-      # memory: 1024Mi #4096Mi
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      cpu: "2000m"
+      memory: "4096Mi"
 
   # Share process namespace to allow sidecar containers to interact with processes in other containers in the same pod
   shareProcessNamespace: false
+
+  # Service links might cause issue if running in a namespace with a large amount of services
+  # that might cause a slow startup when plugins are copied from ref to volume
+  # Set to true to keep previous behavior
+  # See https://github.com/kubernetes/kubernetes/issues/121787
+  enableServiceLinks: false
 
   # Overrides the init container default values
   # -- Resources allocation (Requests and Limits) for Init Container
@@ -223,6 +231,10 @@ controller:
   # Use Local to preserve the client source IP and avoids a second hop for LoadBalancer and NodePort type services,
   # but risks potentially imbalanced traffic spreading.
   serviceExternalTrafficPolicy:
+
+  # If enabled, the controller is available through its service before its pods reports ready. Makes startup screen and
+  # auto-reload on restart feature possible.
+  publishNotReadyAddresses:
 
   # -- Jenkins controller service annotations
   serviceAnnotations: {}
@@ -391,10 +403,10 @@ controller:
   # Plugins will be installed during Jenkins controller start
   # -- List of Jenkins plugins to install. If you don't want to install plugins, set it to `false`
   installPlugins:
-    - kubernetes:4211.v08850dd0dfa_3
-    - workflow-aggregator:596.v8c21c963d92d
-    - git:5.2.1
-    - configuration-as-code:1775.v810dc950b_514
+    - kubernetes:4313.va_9b_4fe2a_0e34
+    - workflow-aggregator:600.vb_57cdd26fdd7
+    - git:5.7.0
+    - configuration-as-code:1932.v75cb_b_f1b_698d
 
   # If set to false, Jenkins will download the minimum required version of all dependencies.
   # -- Download the minimum required version or latest version of all dependencies
@@ -531,6 +543,10 @@ controller:
     authorizationStrategy: |-
       loggedInUsersCanDoAnything:
         allowAnonymousRead: false
+
+    # -- Annotations for the JCasC ConfigMap
+    configMapAnnotations: {}
+
   # -- Custom init-container specification in raw-yaml format
   customInitContainers: []
   # - name: custom-init
@@ -552,7 +568,7 @@ controller:
         # -- Repository of the image that triggers the reload
         repository: kiwigrid/k8s-sidecar
         # -- Tag for the image that triggers the reload
-        tag: 1.26.2
+        tag: 1.30.1
       imagePullPolicy: IfNotPresent
       resources: {}
         #   limits:
@@ -561,6 +577,24 @@ controller:
         #   requests:
         #     cpu: 50m
         #     memory: 50Mi
+      # -- Enables additional volume mounts for the config auto-reload container
+      additionalVolumeMounts: []
+        #   - name: auto-reload-config
+        #     mountPath: /var/config/logger
+        #   - name: auto-reload-logs
+        #     mountPath: /var/log/auto_reload
+      # -- Config auto-reload logging settings
+      logging:
+        # See default settings https://github.com/kiwigrid/k8s-sidecar/blob/master/src/logger.py
+        configuration:
+          # -- Enables custom log config utilizing using the settings below.
+          override: false
+          logLevel: INFO
+          formatter: JSON
+          logToConsole: true
+          logToFile: false
+          maxBytes: 1024
+          backupCount: 3
 
       # -- The scheme to use when connecting to the Jenkins configuration as code endpoint
       scheme: http
@@ -648,6 +682,9 @@ controller:
   # ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
   # -- Update strategy for StatefulSet
   updateStrategy: {}
+
+  # -- Topology spread constraints
+  topologySpreadConstraints: {}
 
   ingress:
     # -- Enables ingress
@@ -765,7 +802,7 @@ controller:
     # https://plugins.jenkins.io/prometheus
 
     # -- Enables prometheus service monitor
-    enabled: true
+    enabled: false
     # -- Additional labels to add to the service monitor object
     serviceMonitorAdditionalLabels: {}
     # -- Set a custom namespace where to deploy ServiceMonitor resource
@@ -879,6 +916,14 @@ agent:
   # -- The name of the pod template to use for providing default values
   defaultsProviderTemplate: ""
 
+  # Useful for not including a serviceAccount in the template if `false`
+  # -- Use `serviceAccountAgent.name` as the default value for defaults template `serviceAccount`
+  useDefaultServiceAccount: true
+
+  # -- Override the default service account
+  # @default -- `serviceAccountAgent.name` if `agent.useDefaultServiceAccount` is `true`
+  serviceAccount:
+
   # For connecting to the Jenkins controller
   # -- Overrides the Kubernetes Jenkins URL
   jenkinsUrl:
@@ -886,6 +931,10 @@ agent:
   # connects to the specified host and port, instead of connecting directly to the Jenkins controller
   # -- Overrides the Kubernetes Jenkins tunnel
   jenkinsTunnel:
+  # -- Disables the verification of the controller certificate on remote connection. This flag correspond to the "Disable https certificate check" flag in kubernetes plugin UI
+  skipTlsVerify: false
+  # -- Enable the possibility to restrict the usage of this agent to specific folder. This flag correspond to the "Restrict pipeline support to authorized folders" flag in kubernetes plugin UI
+  usageRestricted: false
   # -- The connection timeout in seconds for connections to Kubernetes API. The minimum value is 5
   kubernetesConnectTimeout: 5
   # -- The read timeout in seconds for connections to Kubernetes API. The minimum value is 15
@@ -906,7 +955,7 @@ agent:
     # -- Repository to pull the agent jnlp image from
     repository: "jenkins/inbound-agent"
     # -- Tag of the image to pull
-    tag: "3206.vb_15dcf73f6a_9-3"
+    tag: "3283.v92c105e0f819-9"
   # -- Configure working directory for default agent
   workingDir: "/home/jenkins/agent"
   nodeUsageMode: "NORMAL"
@@ -928,13 +977,13 @@ agent:
   hostNetworking: false
   # -- Resources allocation (Requests and Limits)
   resources:
-    requests: {}
-      # cpu: 512m
-      # memory: 512Mi
+    requests:
+      cpu: "512m"
+      memory: "512Mi"
       # ephemeralStorage:
-    limits: {}
-      # cpu: 512m
-      # memory: 512Mi
+    limits:
+      cpu: "512m"
+      memory: "512Mi"
       # ephemeralStorage:
   livenessProbe: {}
 #    execArgs: "cat /tmp/healthy"
@@ -973,10 +1022,10 @@ agent:
   # - type: EmptyDir
   #   mountPath: /var/myapp/myemptydir
   #   memory: false
-  # - type: EphemeralVolume #TODO
+  # - type: EphemeralVolume
   #   mountPath: /var/myapp/myephemeralvolume
   #   accessModes: ReadWriteOnce
-  #   requestsSize: 1Gi #10Gi
+  #   requestsSize: 10Gi
   #   storageClassName: mystorageclass
   # - type: HostPath
   #   hostPath: /var/lib/containers
@@ -1059,6 +1108,18 @@ agent:
   # -- Agent Pod base name
   podName: "default"
 
+  # Enables garbage collection of orphan pods for this Kubernetes cloud. (beta)
+  garbageCollection:
+    # -- When enabled, Jenkins will periodically check for orphan pods that have not been touched for the given timeout period and delete them.
+    enabled: false
+    # -- Namespaces to look at for garbage collection, in addition to the default namespace defined for the cloud. One namespace per line.
+    namespaces: ""
+    # namespaces: |-
+    #   namespaceOne
+    #   namespaceTwo
+    # -- Timeout value for orphaned pods
+    timeout: 300
+
   # -- Allows the Pod to remain active for reuse until the configured number of minutes has passed since the last step was executed on it
   idleMinutes: 0
 
@@ -1079,6 +1140,8 @@ agent:
 
   # -- Defines how the raw yaml field gets merged with yaml definitions from inherited pod templates. Possible values: "merge" or "override"
   yamlMergeStrategy: "override"
+  # -- Controls whether the defined yaml merge strategy will be inherited if another defined pod template is configured to inherit from the current one
+  inheritYamlMergeStrategy: false
   # -- Timeout in seconds for an agent to be online
   connectTimeout: 100
   # -- Annotations to apply to the pod
@@ -1177,7 +1240,7 @@ additionalClouds: {}
 
 persistence:
   # -- Enable the use of a Jenkins PVC
-  enabled: false
+  enabled: true
 
   # A manually managed Persistent Volume and Claim
   # Requires persistence.enabled: true
@@ -1250,6 +1313,8 @@ rbac:
   create: true
   # -- Whether the Jenkins service account should be able to read Kubernetes secrets
   readSecrets: false
+  # -- Whether the Jenkins service account should be able to use the OpenShift "nonroot" Security Context Constraints
+  useOpenShiftNonRootSCC: false
 
 serviceAccount:
   # -- Configures if a ServiceAccount with this name should be created
@@ -1264,6 +1329,8 @@ serviceAccount:
   extraLabels: {}
   # -- Controller ServiceAccount image pull secret
   imagePullSecretName:
+  # -- Auto-mount ServiceAccount token
+  automountServiceAccountToken: true
 
 
 serviceAccountAgent:
@@ -1279,6 +1346,8 @@ serviceAccountAgent:
   extraLabels: {}
   # -- Agent ServiceAccount image pull secret
   imagePullSecretName:
+  # -- Auto-mount ServiceAccount token
+  automountServiceAccountToken: true
 
 # -- Checks if any deprecated values are used
 checkDeprecation: true
@@ -1301,4 +1370,4 @@ helmtest:
       # -- Repository of the image used to test the framework
       repository: "bats/bats"
       # -- Tag of the image to test the framework
-      tag: "1.11.0"
+      tag: "1.11.1"
