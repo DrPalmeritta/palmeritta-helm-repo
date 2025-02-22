@@ -3,9 +3,9 @@ entries:
   chartmuseum:
   - apiVersion: v2
     appVersion: 0.16.1
-    created: "2025-02-22T16:37:28.416525464Z"
+    created: "2025-02-22T16:40:25.345792078Z"
     description: Own helm chart repository with chartmuseum
-    digest: 418735975c323b65f38a5751b32fe003f8fbdaf5567b6eceb8af6e714e188308
+    digest: 7efaace8602f41833c8391d4d4e86b30d3bffbe2d972523b9f4670f37d5769ce
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -16,7 +16,7 @@ entries:
   elk-stack:
   - apiVersion: v2
     appVersion: 7.17.3
-    created: "2025-02-22T16:37:28.424377243Z"
+    created: "2025-02-22T16:40:25.352993476Z"
     dependencies:
     - alias: es-master
       name: elasticsearch
@@ -40,7 +40,7 @@ entries:
       repository: https://helm.elastic.co
       version: 7.17.3
     description: Helm chart for full ELK stack deployment
-    digest: 5691fa0e31e5a8e56a692afd65e25919243a1cd10ed3edc4ea1665963e455d73
+    digest: 7b5a06df023968e68f5747a0e59d75913991b1719b4bc31758650c38d8aadaf8
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -51,9 +51,9 @@ entries:
   fluxcd:
   - apiVersion: v2
     appVersion: 2.2.3
-    created: "2025-02-22T16:37:28.427639588Z"
+    created: "2025-02-22T16:40:25.356079986Z"
     description: A Helm chart for own local fluxcd
-    digest: 236a69a20fd95ee5665e421cdb5afc85802c86809ccf94b7022e4596c8805ced
+    digest: ffaaaa077795144159700a15c9bd1fe2ff733ca939c39be573c4132bfc59d5be
     name: fluxcd
     type: application
     urls:
@@ -62,9 +62,9 @@ entries:
   foreman:
   - apiVersion: v2
     appVersion: 0.3.0
-    created: "2025-02-22T16:37:28.428010298Z"
+    created: "2025-02-22T16:40:25.356444636Z"
     description: A web UI for managing Renovate jobs.
-    digest: f65f859614c062f50a9b9310cfb2c34e96115fe4236ac8980addb64336b261b0
+    digest: 7885153c3a8624494f7611c20fe14f5e0b550a1fbbc64c12eab411e12ef0adac
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -74,38 +74,11 @@ entries:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/foreman-0.1.0.tgz
     version: 0.1.0
   jenkins:
-  - annotations:
-      artifacthub.io/category: integration-delivery
-      artifacthub.io/changes: |
-        - Update `docker.io/kiwigrid/k8s-sidecar` to version `1.30.1`
-      artifacthub.io/images: |
-        - name: jenkins
-          image: docker.io/jenkins/jenkins:2.492.1-jdk17
-        - name: k8s-sidecar
-          image: docker.io/kiwigrid/k8s-sidecar:1.30.1
-        - name: inbound-agent
-          image: jenkins/inbound-agent:3283.v92c105e0f819-9
-      artifacthub.io/license: Apache-2.0
-      artifacthub.io/links: |
-        - name: Chart Source
-          url: https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
-        - name: Jenkins
-          url: https://www.jenkins.io/
-        - name: support
-          url: https://github.com/jenkinsci/helm-charts/issues
-    apiVersion: v2
+  - apiVersion: v2
     appVersion: 2.492.1
-    created: "2025-02-22T16:37:28.43048029Z"
-    description: 'Jenkins - Build great things at any scale! As the leading open source
-      automation server, Jenkins provides over 2000 plugins to support building, deploying
-      and automating any project. '
-    digest: a97e29425761bdab76cf57568d8fa3accdf01d74e7904f8512490c8c2ab7f341
-    home: https://www.jenkins.io/
-    icon: https://get.jenkins.io/art/jenkins-logo/logo.svg
-    keywords:
-    - jenkins
-    - ci
-    - devops
+    created: "2025-02-22T16:40:25.358808549Z"
+    description: Helm chart for Jenkins
+    digest: 441bdb074f6dffae4ba4ede20c8aec6af12d528f9008764c43f5ba7cc2125d48
     maintainers:
     - email: maor.friedman@redhat.com
       name: maorfr
@@ -118,11 +91,6 @@ entries:
     - email: timjacomb1@gmail.com
       name: timja
     name: jenkins
-    sources:
-    - https://github.com/jenkinsci/jenkins
-    - https://github.com/jenkinsci/docker-inbound-agent
-    - https://github.com/maorfr/kube-tasks
-    - https://github.com/jenkinsci/configuration-as-code-plugin
     type: application
     urls:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/jenkins-5.8.16.tgz
@@ -143,7 +111,7 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 24.0.4
-    created: "2025-02-22T16:37:28.441874681Z"
+    created: "2025-02-22T16:40:25.370717033Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -156,7 +124,7 @@ entries:
       version: 2.x.x
     description: Keycloak is a high performance Java-based identity and access management
       solution.
-    digest: ddbfabfe0b4db93de3f9604ff2e1009d3751de3c19c25937b87e5ad3b472ddf5
+    digest: ab430d3583c3216c392e69b81f56c2b01032d843919c6d8d3053f60d35ed0f94
     maintainers:
     - email: zalupa@gmail.com
       name: nikitaevdokimov
@@ -167,7 +135,7 @@ entries:
   kube-prometheus-stack:
   - apiVersion: v2
     appVersion: v0.71.2
-    created: "2025-02-22T16:37:28.48721507Z"
+    created: "2025-02-22T16:40:25.416189541Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -186,7 +154,7 @@ entries:
       repository: https://grafana.github.io/helm-charts
       version: 7.3.*
     description: kube-prometheus-stack helm chart for local microk8s
-    digest: 3f8b58c1996116a9fb718b7e5fc1bb84088e573f9367827967e1207286cf0d29
+    digest: a34752e983ee2ab87c60170e91fc108fd3aa71897bd2a998b7ba8e013c777d57
     kubeVersion: '>=1.19.0-0'
     maintainers:
     - email: zalupa@gmail.com
@@ -261,9 +229,9 @@ entries:
   nextjs-demo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-22T16:37:28.487404403Z"
+    created: "2025-02-22T16:40:25.416593974Z"
     description: A Helm chart for Kubernetes
-    digest: 31f4bbebf6901d1edd1d1096531bd5867ac38df3b8e63cedc9699776f90daf8c
+    digest: f61e3e7737d5dab1a39d426748ad75091b0b4f69d9bf4edfe3e998010a062b27
     name: nextjs-demo
     type: application
     urls:
@@ -282,12 +250,12 @@ entries:
   teamcity-server:
   - apiVersion: v2
     appVersion: "2023.11"
-    created: "2025-02-22T16:37:28.488137829Z"
+    created: "2025-02-22T16:40:25.417343751Z"
     description: A Helm chart for deploy HA teamcity server
-    digest: 3832201ef349dc0d57e9e8f866d78f210ce225bf00c6bd5c0cef333fb7f9b82b
+    digest: 80be71ed78a79d7e3bb7557009418821ed5343cb750ef7a7ebb09e195dec1ae2
     name: teamcity-server
     type: application
     urls:
     - https://DrPalmeritta.github.io/palmeritta-helm-repo/teamcity-server-3.1.1.tgz
     version: 3.1.1
-generated: "2025-02-22T16:37:28.415520763Z"
+generated: "2025-02-22T16:40:25.344431995Z"
